@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="40" height="40" class="me-2">
+      Event Management System
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <form class="d-flex me-3" action="{{ url_for('events') }}" method="get">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search events..." aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+
+      {% if current_user.is_authenticated %}
+        <span class="navbar-text text-white me-3">Hello, {{ current_user.name }}</span>
+        <a class="btn btn-outline-light" href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

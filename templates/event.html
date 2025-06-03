@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ event.title if event else 'Event Not Found' }} - Event Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% include 'user_nav.html' %}
+
+
+  <div class="container my-5">
+    {% if event %}
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <img src="{{ url_for('static', filename='images/' + event.image) }}" class="img-fluid rounded shadow-sm" alt="{{ event.title }}">
+      </div>
+
+      <div class="col-md-6">
+        <h2 class="fw-bold">{{ event.title }}</h2>
+        <p class="text-muted"><strong>Category:</strong> {{ event.category }}</p>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Price:</strong> {{ event.price }}</p>
+
+        <div class="mt-4">
+          <a href="{{ url_for('booking') }}?event_id={{ event.id }}" class="btn btn-primary me-2">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col">
+        <h4>About this Event</h4>
+        <p>{{ event.full_desc }}</p>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="alert alert-danger text-center">
+      <h4>Event not found</h4>
+      <p>The event you're looking for doesn't exist or has been removed.</p>
+      <a href="{{ url_for('events') }}" class="btn btn-primary">Browse Events</a>
+    </div>
+    {% endif %}
+  </div>
+
+  {% include 'user_footer.html' %}
+
+
+</body>
+</html>

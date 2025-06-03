@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('admin_dashboard') }}">Admin Panel</a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_events') }}">All Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}">Add Event</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_bookings') }}">Bookings</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_reports') }}">Reports</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_logout') }}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

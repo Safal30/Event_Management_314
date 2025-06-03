@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Reports</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  {% include 'admin_nav.html' %}
+
+  <div class="container mt-4">
+    <h2 class="mb-4">📊 Event Performance Summary</h2>
+
+
+  <div class="mb-5 p-3 border rounded shadow-sm">
+    <h4>📈 Overall Stats</h4>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Total Bookings Across All Events:</strong> {{ total_bookings_all }}</li>
+      <li class="list-group-item"><strong>Total Revenue Across All Events:</strong> ${{ total_revenue_all }}</li>
+    </ul>
+  </div>
+
+
+  {% for data in report_data %}
+    <div class="mb-5 p-3 border rounded shadow-sm">
+      <h4>{{ loop.index }}. {{ data.title }}</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Total Bookings:</strong> {{ data.bookings }}</li>
+        <li class="list-group-item"><strong>Revenue:</strong> ${{ data.revenue }}</li>
+        <li class="list-group-item"><strong>General Tickets Sold:</strong> {{ data.ticket_counts['General'] }}</li>
+        <li class="list-group-item"><strong>VIP Tickets Sold:</strong> {{ data.ticket_counts['VIP'] }}</li>
+        <li class="list-group-item"><strong>Free Tickets Issued:</strong> {{ data.ticket_counts['Free'] }}</li>
+      </ul>
+    </div>
+  {% else %}
+    <div class="alert alert-warning">No events found.</div>
+  {% endfor %}
+</div>
+
+    {% for data in report_data %}
+      <div class="mb-5 p-3 border rounded shadow-sm">
+        <h4>{{ loop.index }}. {{ data.title }}</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Total Bookings:</strong> {{ data.bookings }}</li>
+          <li class="list-group-item"><strong>Revenue:</strong> ${{ data.revenue }}</li>
+          <li class="list-group-item"><strong>General Tickets Sold:</strong> {{ data.ticket_counts['General'] }}</li>
+          <li class="list-group-item"><strong>VIP Tickets Sold:</strong> {{ data.ticket_counts['VIP'] }}</li>
+          <li class="list-group-item"><strong>Free Tickets Issued:</strong> {{ data.ticket_counts['Free'] }}</li>
+        </ul>
+      </div>
+    {% else %}
+      <div class="alert alert-warning">No events found.</div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>

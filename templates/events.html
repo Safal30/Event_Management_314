@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Events - Event Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .btn.active-category {
+      background-color: #0d6efd;
+      color: white;
+      border-color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+
+  {% include 'user_nav.html' %}
+
+
+  <div class="container mt-5">
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-4" id="filterButtons">
+      <a href="{{ url_for('events') }}" class="btn btn-outline-primary" data-category="All">Show All</a>
+      {% for cat in ['Music', 'Workshops', 'Business', 'Art', 'Sports'] %}
+        <a href="{{ url_for('events', q=cat) }}" class="btn btn-outline-primary" data-category="{{ cat }}">{{ cat }}</a>
+      {% endfor %}
+
+    </div>
+
+    <h2 class="text-center mb-4" id="categoryHeading">
+      {% if category %}
+        {{ category }} Events
+          Search Results for "{{ category }}"
+      {% else %}
+        All Events
+      {% endif %}
+    </h2>
+
+    <div class="row">
+      {% if events %}
+        {% for event in events %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="{{ url_for('static', filename='images/' + event.image) }}" class="card-img-top" alt="{{ event.title }}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ event.title }}</h5>
+              <p class="card-text">{{ event.desc }}</p>
+              <div class="mt-auto">
+                <a href="{{ url_for('event_detail') }}?event={{ event.title | urlencode }}" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-center">No events found in this category.</p>
+      {% endif %}
+    </div>
+  </div>
+
+{% include 'user_footer.html' %}
+
+  <script>
+    const currentCategory = "{{ category | default('All') }}";
+    const buttons = document.querySelectorAll('#filterButtons a');
+
+    buttons.forEach(button => {
+      const cat = button.getAttribute('data-category');
+      if (cat === currentCategory) {
+        button.classList.add('active-category');
+      }
+    });
+  </script>
+
+
+</body>
+</html>

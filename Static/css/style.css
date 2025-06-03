@@ -1,0 +1,144 @@
+/* General styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar tweaks */
+.navbar-brand {
+  font-weight: medium;
+  font-size: 1.25rem;
+}
+
+/* Hero section (we'll add this HTML soon) */
+.hero {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Category boxes */
+.category-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Event cards (optional refinements) */
+.card-title {
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Footer styles */
+footer {
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+footer p, footer a {
+  color: #fff !important;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 80px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.category-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+footer {
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Event Details Page */
+.img-fluid {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+h5 {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.btn-primary {
+  padding: 10px 24px;
+  font-weight: 500;
+}
+
+footer {
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+}
+
+.btn.active-category {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}

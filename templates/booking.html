@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Ticket - Event Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% include 'user_nav.html' %}
+
+
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+          <h3 class="text-center mb-4">Complete Your Booking</h3>
+          <form action="{{ url_for('success') }}" method="POST">
+            <input type="hidden" name="event_id" value="{{ request.args.get('event_id') }}">
+
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="ticket" id="general" value="General" required>
+              <label class="form-check-label" for="general">General Admission - $20</label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="ticket" id="vip" value="VIP">
+              <label class="form-check-label" for="vip">VIP Ticket - $50 (Front row + free goodies)</label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="ticket" id="free" value="Free">
+              <label class="form-check-label" for="free">Free Entry (Limited seats)</label>
+            </div>
+
+            <input type="hidden" name="event_id" value="{{ request.args.get('event_id') }}">
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary px-4">Confirm Booking</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% include 'user_footer.html' %}
+
+
+</body>
+</html>
